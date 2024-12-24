@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello</title>
+		<meta charset="UTF-8">
+		<style>
+		h1 {
+			filter: drop-shadow(5px 5px 5px #4682B4);
+			color: white;
+		}
+		body{
+			background-color: rgba(53, 116, 130, 0.5);
+		}
+		.rotate {
+			animation: rotation 0.1s infinite linear;
+		}
+		
+		@keyframes rotation {
+			from {
+				transform: rotate(-1deg);
+			}
+			to {
+				transform: rotate(1deg);
+			}
+		}
+		#h {
+			position: absolute;
+			filter: drop-shadow(5px 5px 5px #4682B4);
+			top: 10%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-family: "Times New Roman";
+			font-size: 80px;
+			color: red;
+		}
+		</style>
+	<body>
+		<h1 align="center" onclick="playAudio('music/1.mp3')">Hello, World!</h1>
+		<nav id="im" align="center">
+			<img src="images/2.gif" class="rotate" align="rigth"></img>
+		</nav>
+		<script>
+			var f=true;
+			document.getElementById("im").addEventListener("click", function() {
+				if (f){
+					document.getElementById("h").innerHTML = "MERRY CHRISTMAS!";
+					f=false;
+				}
+				else{
+					document.getElementById("h").innerHTML = "";
+					f=true;
+				}
+			});
+			var flag=false;
+			var audio;
+			function playAudio(url) {
+				if (!flag){
+					audio = new Audio(url);
+					audio.loop=true;
+					audio.volume=0.1;
+					audio.play();
+					flag=true;
+					}
+				else {
+					audio.pause();
+					flag=false;
+				}
+			}
+		</script>
+		<h2 id="h"></h2>
+	</body>
+</html>
